@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body{
+                text-align: center;
+                background-color: greenyellow;
+                font-size: 150%;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Temperature Converter</h2>
+        <input type="textbox" id="degree" placeholder="enter temperature"><br><br>
+        <p>Given unit in?</p>
+        <select id="userinput"><br><br>
+            <option value="C">Celsius</option>
+            <option value="F">Fahrenheit</option>
+            <option value="K">Kelvin</option>
+        </select>
+        <p>Unit to convert it in:
+        </p>
+        <select id="useroutput"><br><br>
+            <option value="Ce">Celsius</option>
+            <option value="Fa">Fahrenheit</option>
+            <option value="Ke">Kelvin</option>
+        </select><br><br>
+        <input type="button" onclick="convert()" value="Convert" ><br><br>
+
+        <h4>the result is is:</h4>
+        <p id="result"></p>
+        <script>
+            function convert()
+            {
+                let num=parseInt(document.getElementById("degree").value);
+                let unitin=document.getElementById("userinput").value;
+                let unitout=document.getElementById("useroutput").value;
+                let result;
+                if(isNaN(num))
+                {
+                    alert("enter a valid number");
+                    return;
+                }
+                if(unitin === 'C' && unitout === 'Fa' )
+                {
+                    result=num*(9/5)+32;
+                }
+                else if(unitin === 'C' && unitout ==='Ke') 
+                {
+                    result=num+273.15;
+                }
+                else if(unitin === 'F' && unitout === 'Ce')
+                {
+                    result=(num-32)/(9/5);
+                }
+                else if(unitin === 'F' && unitout === 'Ke')
+                {
+                    result=((num-32)/(9/5))+273.15;
+                }
+                else if(unitin === 'K' && unitout === 'Fa')
+                {
+                    result=((num-273.15)*(9/5))+32;
+                }
+                else if(unitin === 'K' && unitout === 'Ce')
+                {
+                    result=num-273.15;
+                }
+                document.getElementById('result').textContent=result;
+            }
+        </script>
+        </body>
+        </html>
